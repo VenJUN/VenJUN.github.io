@@ -20,29 +20,29 @@
     var CONFIG = {"hostname":"venjun.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="在buu上刷一下Misc的有关题目">
+  <meta name="description" content="getshell小操作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Misc刷刷题">
-<meta property="og:url" content="http://venjun.github.io/2020/08/27/Misc%E5%88%B7%E5%88%B7%E9%A2%98/index.html">
+<meta property="og:title" content="Sqlmap Getshell的方法">
+<meta property="og:url" content="http://venjun.github.io/2021/08/03/Sqlmap%20Getshell%E7%9A%84%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="怪の博客">
-<meta property="og:description" content="在buu上刷一下Misc的有关题目">
+<meta property="og:description" content="getshell小操作">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200827231222218.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200827231222356.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUwMDY4NjQ4,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200827231222279.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUwMDY4NjQ4,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200827231222276.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUwMDY4NjQ4,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200827231222288.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUwMDY4NjQ4,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200827231222294.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUwMDY4NjQ4,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200827231222280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUwMDY4NjQ4,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200827231222287.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUwMDY4NjQ4,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="article:published_time" content="2020-08-27T14:17:34.000Z">
-<meta property="article:modified_time" content="2020-08-27T15:16:54.602Z">
+<meta property="og:image" content="https://nc0.cdn.zkaq.cn/md/7959/c34dda0e4bbf0eb9012a09fa380e332b_76021.png">
+<meta property="og:image" content="https://nc0.cdn.zkaq.cn/md/7959/dd1d76b4844b8ec7ad8b143360c9d08a_57258.png">
+<meta property="og:image" content="https://nc0.cdn.zkaq.cn/md/7959/f1c5b16d3032bd0afd0b12437e286664_15818.png">
+<meta property="og:image" content="https://nc0.cdn.zkaq.cn/md/7959/6db5ec9b4d9a261fba784316dd5bca03_80420.png">
+<meta property="og:image" content="https://nc0.cdn.zkaq.cn/md/7959/8627484294b60bca5f7f3b39b0d1f32f_80827.png">
+<meta property="og:image" content="https://nc0.cdn.zkaq.cn/md/7959/ea2c9e1b5ea1a055b1318901906ffad5_63091.png">
+<meta property="og:image" content="https://nc0.cdn.zkaq.cn/md/7959/17e30c271b02c4ff70afa1ef5d7388dd_18515.png">
+<meta property="og:image" content="https://nc0.cdn.zkaq.cn/md/7959/f1a7f3ad66fa84f89787104aa4ce4109_57225.png">
+<meta property="article:published_time" content="2021-08-03T08:49:39.000Z">
+<meta property="article:modified_time" content="2021-05-15T08:02:06.720Z">
 <meta property="article:author" content="Quinn">
-<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="渗透测试">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200827231222218.png#pic_center">
+<meta name="twitter:image" content="https://nc0.cdn.zkaq.cn/md/7959/c34dda0e4bbf0eb9012a09fa380e332b_76021.png">
 
-<link rel="canonical" href="http://venjun.github.io/2020/08/27/Misc%E5%88%B7%E5%88%B7%E9%A2%98/">
+<link rel="canonical" href="http://venjun.github.io/2021/08/03/Sqlmap%20Getshell%E7%9A%84%E6%96%B9%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -55,7 +55,7 @@
   };
 </script>
 
-  <title>Misc刷刷题 | 怪の博客</title>
+  <title>Sqlmap Getshell的方法 | 怪の博客</title>
   
 
 
@@ -170,7 +170,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://venjun.github.io/2020/08/27/Misc%E5%88%B7%E5%88%B7%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="http://venjun.github.io/2021/08/03/Sqlmap%20Getshell%E7%9A%84%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/tou.jpg">
@@ -183,7 +183,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Misc刷刷题
+          Sqlmap Getshell的方法
         </h1>
 
         <div class="post-meta">
@@ -193,7 +193,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-08-27 22:17:34" itemprop="dateCreated datePublished" datetime="2020-08-27T22:17:34+08:00">2020-08-27</time>
+              <time title="创建时间：2021-08-03 16:49:39" itemprop="dateCreated datePublished" datetime="2021-08-03T16:49:39+08:00">2021-08-03</time>
             </span>
 
           
@@ -207,17 +207,52 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="在buu上刷一下Misc的有关题目"><a href="#在buu上刷一下Misc的有关题目" class="headerlink" title="在buu上刷一下Misc的有关题目"></a>在buu上刷一下Misc的有关题目</h1><a id="more"></a>
-<h2 id="金三胖"><a href="#金三胖" class="headerlink" title="金三胖"></a>金三胖</h2><p>下载之后得到一个zip，打开发现是一张动图，并且隐约可以看到flag的信息，直接保存所有帧，得到flag。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200827231222218.png#pic_center" alt="在这里插入图片描述"></p>
-<h2 id="基础破解"><a href="#基础破解" class="headerlink" title="基础破解"></a>基础破解</h2><p>因为题目所说破解，下载得到加密的zip（密码为四位数字），直接暴力破解，ARCHPR直接走一波得到密码，打开得到flag.txt发现是base64加密，解密后得到flag。<br><img src="https://img-blog.csdnimg.cn/20200827231222356.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUwMDY4NjQ4,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200827231222279.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUwMDY4NjQ4,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h2 id="你竟然赶我走"><a href="#你竟然赶我走" class="headerlink" title="你竟然赶我走"></a>你竟然赶我走</h2><p>打开下载的zip，里面只有一张图片，没有发现异常，用记事本打开直接看到了flag。</p>
-<h2 id="乌镇峰会种图"><a href="#乌镇峰会种图" class="headerlink" title="乌镇峰会种图"></a>乌镇峰会种图</h2><p>搞了半天啥都没发现，结果用记事本一打开。。。。得到flag。<br><img src="https://img-blog.csdnimg.cn/20200827231222276.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUwMDY4NjQ4,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h2 id="LSB"><a href="#LSB" class="headerlink" title="LSB"></a>LSB</h2><p>从题目的名字，大致就往LSB隐写的方向去考虑,stegsolve分析一下，改通道之后看到png，保存之后得到一个文件，改成png后得到一张二维码，扫一扫直接出flag。<br><img src="https://img-blog.csdnimg.cn/20200827231222288.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUwMDY4NjQ4,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h2 id="rar"><a href="#rar" class="headerlink" title="rar"></a>rar</h2><p>根据提示又是一个四位数字，直接暴力破解得到口令，打开flag.txt得到flag。<br><img src="https://img-blog.csdnimg.cn/20200827231222294.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUwMDY4NjQ4,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h2 id="文件中的秘密"><a href="#文件中的秘密" class="headerlink" title="文件中的秘密"></a>文件中的秘密</h2><p>一个压缩包，打开后是一张图片。<br>找了半天，没找到，后来在右键，属性，详细信息里，备注中发现了flag。</p>
-<p>（后面用记事本打开好像也能看到flag）<br><img src="https://img-blog.csdnimg.cn/20200827231222280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUwMDY4NjQ4,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h2 id="zip伪加密"><a href="#zip伪加密" class="headerlink" title="zip伪加密"></a>zip伪加密</h2><p>因为是伪加密，直接用010editor打开，找到504B0102，将09改为00，之后加密取消，打开txt得到flag。<br><img src="https://img-blog.csdnimg.cn/20200827231222287.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUwMDY4NjQ4,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+        <h1 id="getshell小操作"><a href="#getshell小操作" class="headerlink" title="getshell小操作"></a><center>getshell小操作</center></h1><a id="more"></a>
+<h2 id="先介绍一下几个命令"><a href="#先介绍一下几个命令" class="headerlink" title="先介绍一下几个命令"></a>先介绍一下几个命令</h2><p>–os-cmd=ipconfig  #执行cmd命令</p>
+<p>–os-shell= #建立shell，该命令可以创建一个对方操作系统的shell，远程执行系统命令，但是需要一些条件。</p>
+<p>注:使用–os 命令会向目标写入一个文件上传脚本,然后通过该上传脚本上传shell、meterpreter等,并修改权限(phpversion&lt;4.1.0时)</p>
+<h2 id="演示环境"><a href="#演示环境" class="headerlink" title="演示环境"></a>演示环境</h2><p>windows server 2008 r2</p>
+<p>phpStudy2016、php5.5.38</p>
+<p>sqlmap1.3.2.33#dev</p>
+<p>sqli-lab靶场</p>
+<h2 id="sqlmap-getshell的条件"><a href="#sqlmap-getshell的条件" class="headerlink" title="sqlmap getshell的条件"></a>sqlmap getshell的条件</h2><p>1、网站必须是root权限</p>
+<p>2、知道网站的绝对路径</p>
+<p>3、PHP关闭魔术引号，php主动转义功能关闭</p>
+<p>4、secure_file_priv=值为空（不是null，后面会写）</p>
+<h2 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h2><p>一、查看当前注入点数据库权限是否为dba：True<br>sqlmap.py -u “<a target="_blank" rel="noopener" href="http://192.168.139.137/sql/Less-1/?id=1&quot;">http://192.168.139.137/sql/Less-1/?id=1&quot;</a> –is-dba</p>
+<p><img src="https://nc0.cdn.zkaq.cn/md/7959/c34dda0e4bbf0eb9012a09fa380e332b_76021.png"><br>二、寻找绝对路径<br>sqlmap.py -u “<a target="_blank" rel="noopener" href="http://192.168.139.137/sql/Less-1/?id=1&quot;">http://192.168.139.137/sql/Less-1/?id=1&quot;</a> –sql-shell</p>
+<p><img src="https://nc0.cdn.zkaq.cn/md/7959/dd1d76b4844b8ec7ad8b143360c9d08a_57258.png"></p>
+<p>因为当前数据库权限为root，接下来就可以使用–sql-shell指令对数据库进行寻找路径之旅。</p>
+<p>后面我们继续输入命令<br>sql-shell&gt; select @@datadir;</p>
+<p><img src="https://nc0.cdn.zkaq.cn/md/7959/f1c5b16d3032bd0afd0b12437e286664_15818.png"></p>
+<p>通过数据库位置，我们能够做一些简单的判断：</p>
+<p>1、他是一个phpstudy搭建的站点</p>
+<p>2、可以尝试phpstudy的一些目录</p>
+<p>3、尝试构造路径： C:\web\WWW\sql</p>
+<p>常见的找绝对路径方法：</p>
+<p>1、根据网页报错信息</p>
+<p>2、phpinfo、探针上一些信息</p>
+<p>3、数据库查询、暴力破解</p>
+<p>4、也可以查看一些常用的绝对路径</p>
+<p>三、查看PHP是否开启魔术引号（如果开了还可以尝试宽字节注入）</p>
+<p>测试方法：</p>
+<p>1、特殊字符测试是否转义成反斜杠</p>
+<p>2、探针、phpinfo等</p>
+<p>应该默认是关闭的<br>在测试SQL注入时候经常使用单引号等测试字符进行测试，查看是否返回反斜杠转义</p>
+<p>这里我们可以在本地看到单引号转义被关闭了（magic_Q_gpc）</p>
+<p><img src="https://nc0.cdn.zkaq.cn/md/7959/6db5ec9b4d9a261fba784316dd5bca03_80420.png"><br>四、secure_file_priv=值为空</p>
+<p>• ure_file_priv的值为null ，表示限制mysqld 不允许导入|导出</p>
+<p>• 当secure_file_priv的值为/tmp/ ，表示限制mysqld 的导入|导出只能发生在/tmp/目录下</p>
+<p>• 当secure_file_priv的值没有具体值时，表示不对mysqld 的导入|导出做限制</p>
+<p>这个函数决定了我们能否成功写入文件导入我们的木马，这里使用sql查询语句查询该函数</p>
+<p>查询失败以及查询结果为空，这里的原因是某些版本的MySQL默认没有secure_file_priv参数，我们手动添加测试，secure_file_priv=</p>
+<p><img src="https://nc0.cdn.zkaq.cn/md/7959/8627484294b60bca5f7f3b39b0d1f32f_80827.png"></p>
+<p><img src="https://nc0.cdn.zkaq.cn/md/7959/ea2c9e1b5ea1a055b1318901906ffad5_63091.png"><br>五、直接getshell</p>
+<p>使用–os-shell，此时sqlmap会生成两个文件，一个是文件上传脚本文件，一个是PHP的一句话木马文件</p>
+<p>我们可以通过它的文件上传脚本上传一句话马或者是通过他的生成的一句话木马连接菜刀进行管理。<br>我们上传自己写的test.php，通过菜刀连接。</p>
+<p><img src="https://nc0.cdn.zkaq.cn/md/7959/17e30c271b02c4ff70afa1ef5d7388dd_18515.png"></p>
+<p>发现成功连接菜刀！！！</p>
+<p><img src="https://nc0.cdn.zkaq.cn/md/7959/f1a7f3ad66fa84f89787104aa4ce4109_57225.png"></p>
 
     </div>
 
@@ -227,7 +262,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/CTF/" rel="tag"># CTF</a>
+              <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag"># 渗透测试</a>
           </div>
 
         
@@ -236,13 +271,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/08/10/CTF%E6%9D%82%E9%A1%B9%EF%BC%88%E4%B8%89%EF%BC%89/" rel="prev" title="CTF杂项（三）">
-      <i class="fa fa-chevron-left"></i> CTF杂项（三）
+    <a href="/2020/08/27/Misc%E5%88%B7%E5%88%B7%E9%A2%98/" rel="prev" title="Misc刷刷题">
+      <i class="fa fa-chevron-left"></i> Misc刷刷题
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/08/03/Sqlmap%20Getshell%E7%9A%84%E6%96%B9%E6%B3%95/" rel="next" title="Sqlmap Getshell的方法">
-      Sqlmap Getshell的方法 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -301,7 +333,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8buu%E4%B8%8A%E5%88%B7%E4%B8%80%E4%B8%8BMisc%E7%9A%84%E6%9C%89%E5%85%B3%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">在buu上刷一下Misc的有关题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%91%E4%B8%89%E8%83%96"><span class="nav-number">1.1.</span> <span class="nav-text">金三胖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%A0%B4%E8%A7%A3"><span class="nav-number">1.2.</span> <span class="nav-text">基础破解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E7%AB%9F%E7%84%B6%E8%B5%B6%E6%88%91%E8%B5%B0"><span class="nav-number">1.3.</span> <span class="nav-text">你竟然赶我走</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%8C%E9%95%87%E5%B3%B0%E4%BC%9A%E7%A7%8D%E5%9B%BE"><span class="nav-number">1.4.</span> <span class="nav-text">乌镇峰会种图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LSB"><span class="nav-number">1.5.</span> <span class="nav-text">LSB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rar"><span class="nav-number">1.6.</span> <span class="nav-text">rar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E7%A7%98%E5%AF%86"><span class="nav-number">1.7.</span> <span class="nav-text">文件中的秘密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zip%E4%BC%AA%E5%8A%A0%E5%AF%86"><span class="nav-number">1.8.</span> <span class="nav-text">zip伪加密</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#getshell%E5%B0%8F%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">getshell小操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E5%87%A0%E4%B8%AA%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">先介绍一下几个命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BC%94%E7%A4%BA%E7%8E%AF%E5%A2%83"><span class="nav-number">1.2.</span> <span class="nav-text">演示环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sqlmap-getshell%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">sqlmap getshell的条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.4.</span> <span class="nav-text">基本步骤</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
